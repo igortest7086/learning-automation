@@ -35,4 +35,14 @@ public class UserAccessTests extends CommonConditions {
         Assert.assertEquals(loggedInUserName, testUser.getUsername());
     }
 
+    @Test
+    public void oneCanLoginGitHubWithEmptyPassword() {
+        User testUser = UserCreator.withEmptyPassword();
+        String loggedInUserName = new LoginPage(driver)
+                .openPage()
+                .login(testUser)
+                .getLoggedInUserName();
+        Assert.assertEquals(loggedInUserName, testUser.getUsername());
+    }
+
 }

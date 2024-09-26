@@ -32,5 +32,17 @@ public class UserAccessTests {
         Assert.assertEquals(loggedInUserName, testUser.getUsername());
 
     }
+
+    @Test
+    public void oneCanLoginGitHubWithEmptyPassword() {
+        User testUser = UserCreator.withEmptyPassword();
+        LoginPage loginPage = new LoginPage();
+        String loggedInUserName = loginPage
+                .openLoginPage()
+                .login(testUser)
+                .getLoggedInUserName();
+        Assert.assertEquals(loggedInUserName, testUser.getUsername());
+
+    }
     
 }
